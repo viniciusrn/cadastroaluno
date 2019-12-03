@@ -7,7 +7,7 @@ const db = new Database();
 
 export default class AlunoTelaDetalhes extends Component {
   static navigationOptions = {
-    title: 'Detalhe do Aluno',
+    title: 'Detalhes do Aluno',
   }
 
   constructor() {
@@ -68,6 +68,9 @@ export default class AlunoTelaDetalhes extends Component {
         <Card style={styles.container}>
           <View style={styles.subContainer}>
             <View>
+              <Text style={{fontSize: 20, fontWeight: 'bold'}}>Informações do Aluno:</Text>
+            </View>
+            <View>
               <Text style={{fontSize: 16}}>ID: {this.state.aluno.alunoId}</Text>
             </View>
             <View>
@@ -78,6 +81,9 @@ export default class AlunoTelaDetalhes extends Component {
             </View>
             <View>
               <Text style={{fontSize: 16}}>Série: {this.state.aluno.alunoSerie}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 18, fontWeight: 'bold'}}>Endereço:</Text>
             </View>
             <View>
               <Text style={{fontSize: 16}}>CEP: {this.state.aluno.alunoCep}</Text>
@@ -99,6 +105,9 @@ export default class AlunoTelaDetalhes extends Component {
             </View>
             <View>
               <Text style={{fontSize: 16}}>Estado: {this.state.aluno.alunoEstado}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 20, fontWeight: 'bold'}}>Informações da Mãe:</Text>
             </View>
             <View>
               <Text style={{fontSize: 16}}>Nome da mãe: {this.state.aluno.alunoNomeMae}</Text>
