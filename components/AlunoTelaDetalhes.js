@@ -1,190 +1,137 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput } from 'react-native';
-import { Button } from 'react-native-elements';
+import { ScrollView, StyleSheet, Image, ActivityIndicator, View, Text } from 'react-native';
+import { Card, Button } from 'react-native-elements';
 import Database from '../Database';
 
 const db = new Database();
 
-export default class AlunoTelaAdicionar extends Component {
+export default class AlunoTelaDetalhes extends Component {
   static navigationOptions = {
-    title: 'Adicionar Aluno',
-  };
+    title: 'Detalhe do Aluno',
+  }
+
   constructor() {
     super();
     this.state = {
-      alunoId: '',
-      alunoNome: '',
-      alunoDataNascimento: '',
-      alunoSerie: '',
-      alunoCep: '',
-      alunoRua: '',
-      alunoNumero: '',
-      alunoComplemento: '',
-      alunoBairro: '',
-      alunoCidade: '',
-      alunoEstado: '',
-      alunoNomeMae: '',
-      alunoCpfMae: '',
-      alunoDataPagamentoMae: '',
-      isLoading: false,
+      isLoading: true,
+      aluno: {},
+      id: '',
     };
   }
 
-  updateTextInput = (text, field) => {
-    const state = this.state
-    state[field] = text;
-    this.setState(state);
+  componentDidMount() {
+    this._subscribe = this.props.navigation.addListener('didFocus', () => {
+      const { navigation } = this.props;
+      db.alunoById(navigation.getParam('alunoId')).then((data) => {
+        console.log(data);
+        aluno = data;
+        this.setState({
+          aluno,
+          isLoading: false,
+          id: aluno.alunoId
+        });
+      }).catch((err) => {
+        console.log(err);
+        this.setState = {
+          isLoading: false
+        }
+      })
+    });
   }
   
-  saveAluno() {
+  deleteAluno(id) {
+    const { navigation } = this.props;
     this.setState({
-      isLoading: true,
+      isLoading: true
     });
-    let data = {
-      alunoId: this.state.alunoId,
-      alunoNome: this.state.alunoNome,
-      alunoDataNascimento: this.state.alunoDataNascimento,
-      alunoSerie: this.state.alunoSerie,
-      alunoCep: this.state.alunoCep,
-      alunoRua: this.state.alunoRua,
-      alunoNumero: this.state.alunoNumero,
-      alunoComplemento: this.state.alunoComplemento,
-      alunoBairro: this.state.alunoBairro,
-      alunoCidade: this.state.alunoCidade,
-      alunoEstado: this.state.alunoEstado,
-      alunoNomeMae: this.state.alunoNomeMae,
-      alunoCpfMae: this.state.alunoCpfMae,
-      alunoDataPagamentoMae: this.state.alunoDataPagamentoMae
-    }
-    db.addAluno(data).then((result) => {
+    db.deleteAluno(id).then((result) => {
       console.log(result);
-      this.setState({
-        isLoading: false,
-      });
-      this.props.navigation.state.params.onNavigateBack;
       this.props.navigation.goBack();
     }).catch((err) => {
       console.log(err);
-      this.setState({
-        isLoading: false,
-      });
+      this.setState = {
+        isLoading: false
+      }
     })
   }
+
   render() {
     if(this.state.isLoading){
       return(
         <View style={styles.activity}>
-          <ActivityIndicator size="large" color="#0000ff"/>
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
       )
     }
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Aluno ID'}
-              value={this.state.alunoId}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoId')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Nome do Aluno'}
-              value={this.state.alunoNome}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoNome')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Data de Nascimento'}
-              value={this.state.alunoDataNascimento}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoDataNascimento')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Série do Aluno'}
-              value={this.state.alunoSerie}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoSerie')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'CEP'}
-              value={this.state.alunoCep}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoCep')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Rua'}
-              value={this.state.alunoRua}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoRua')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Número'}
-              value={this.state.alunoNumero}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoNumero')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Complemento'}
-              value={this.state.alunoComplemento}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoComplemento')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Bairro'}
-              value={this.state.alunoBairro}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoBairro')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Cidade'}
-              value={this.state.alunoCidade}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoCidade')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Estado'}
-              value={this.state.alunoEstado}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoEstado')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Nome da Mãe'}
-              value={this.state.alunoNomeMae}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoNomeMae')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'CPF'}
-              value={this.state.alunoCpfMae}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoCpfMae')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Data de Pagamento'}
-              value={this.state.alunoDataPagamentoMae}
-              onChangeText={(text) => this.updateTextInput(text, 'alunoDataPagamentoMae')}
-          />
-        </View>
-        <View style={styles.button}>
-          <Button
-            large
-            leftIcon={{name: 'save'}}
-            title='Salvar'
-            onPress={() => this.saveAluno()} />
-        </View>
+      <ScrollView>
+        <Card style={styles.container}>
+          <View style={styles.subContainer}>
+            <View>
+              <Text style={{fontSize: 16}}>ID: {this.state.aluno.alunoId}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Nome do Aluno: {this.state.aluno.alunoNome}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Data de Nascimento: {this.state.aluno.alunoDataNascimento}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Série: {this.state.aluno.alunoSerie}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>CEP: {this.state.aluno.alunoCep}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Rua: {this.state.aluno.alunoRua}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Número: {this.state.aluno.alunoNumero}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Complemento: {this.state.aluno.alunoComplemento}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Bairro: {this.state.aluno.alunoBairro}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Cidade: {this.state.aluno.alunoCidade}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Estado: {this.state.aluno.alunoEstado}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Nome da mãe: {this.state.aluno.alunoNomeMae}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>CPF da mãe: {this.state.aluno.alunoCpfMae}</Text>
+            </View>
+            <View>
+              <Text style={{fontSize: 16}}>Data pagamento: {this.state.aluno.alunoDataPagamentoMae}</Text>
+            </View>
+          </View>
+          <View style={styles.detailButton}>
+            <Button
+              large
+              backgroundColor={'#CCCCCC'}
+              leftIcon={{name: 'edit'}}
+              title='Editar'
+              onPress={() => {
+                this.props.navigation.navigate('EditarAluno', {
+                  alunoId: `${this.state.id}`,
+                });
+              }} />
+          </View>
+          <View style={styles.detailButton}>
+            <Button
+              large
+              backgroundColor={'#999999'}
+              color={'#FFFFFF'}
+              leftIcon={{name: 'delete'}}
+              title='Deletar'
+              onPress={() => this.deleteAluno(this.state.id)} />
+          </View>
+        </Card>
       </ScrollView>
     );
   }
@@ -197,8 +144,7 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     flex: 1,
-    marginBottom: 20,
-    padding: 5,
+    paddingBottom: 20,
     borderBottomWidth: 2,
     borderBottomColor: '#CCCCCC',
   },
@@ -210,5 +156,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  detailButton: {
+    marginTop: 10
   }
 })

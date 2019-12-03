@@ -84,6 +84,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Aluno ID'}
               value={this.state.alunoId}
+              keyboardType='numeric'
               onChangeText={(text) => this.updateTextInput(text, 'alunoId')}
           />
         </View>
@@ -91,6 +92,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Nome do Aluno'}
               value={this.state.alunoNome}
+              maxLength = {100}
               onChangeText={(text) => this.updateTextInput(text, 'alunoNome')}
           />
         </View>
@@ -105,6 +107,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Série do Aluno'}
               value={this.state.alunoSerie}
+              keyboardType='numeric'
               onChangeText={(text) => this.updateTextInput(text, 'alunoSerie')}
           />
         </View>
@@ -112,6 +115,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'CEP'}
               value={this.state.alunoCep}
+              keyboardType='numeric'
               onChangeText={(text) => this.updateTextInput(text, 'alunoCep')}
           />
         </View>
@@ -119,6 +123,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Rua'}
               value={this.state.alunoRua}
+              maxLength = {120}
               onChangeText={(text) => this.updateTextInput(text, 'alunoRua')}
           />
         </View>
@@ -126,6 +131,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Número'}
               value={this.state.alunoNumero}
+              keyboardType='numeric'
               onChangeText={(text) => this.updateTextInput(text, 'alunoNumero')}
           />
         </View>
@@ -133,6 +139,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Complemento'}
               value={this.state.alunoComplemento}
+              maxLength = {50}
               onChangeText={(text) => this.updateTextInput(text, 'alunoComplemento')}
           />
         </View>
@@ -140,6 +147,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Bairro'}
               value={this.state.alunoBairro}
+              maxLength = {100}
               onChangeText={(text) => this.updateTextInput(text, 'alunoBairro')}
           />
         </View>
@@ -147,6 +155,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Cidade'}
               value={this.state.alunoCidade}
+              maxLength = {120}
               onChangeText={(text) => this.updateTextInput(text, 'alunoCidade')}
           />
         </View>
@@ -154,6 +163,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Estado'}
               value={this.state.alunoEstado}
+              maxLength = {80}
               onChangeText={(text) => this.updateTextInput(text, 'alunoEstado')}
           />
         </View>
@@ -161,6 +171,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'Nome da Mãe'}
               value={this.state.alunoNomeMae}
+              maxLength = {100}
               onChangeText={(text) => this.updateTextInput(text, 'alunoNomeMae')}
           />
         </View>
@@ -168,6 +179,7 @@ export default class AlunoTelaAdicionar extends Component {
           <TextInput
               placeholder={'CPF'}
               value={this.state.alunoCpfMae}
+              keyboardType='numeric'
               onChangeText={(text) => this.updateTextInput(text, 'alunoCpfMae')}
           />
         </View>
