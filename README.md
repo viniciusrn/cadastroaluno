@@ -112,10 +112,13 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle".<br/>
 Agora sim o aplicativo estará funcionando corretamente.
 
 ## Resultados
+As telas a seguir são _prints_ tirados do aplicativo. A imagem da esquerda é a tela inicial, na qual mostra que não possui nenhum aluno cadastrado. Porém ao clicar no botão (+) no canto superior direito o usuário é redirecionado para a tela de cadastro do aluno, imagem da direita. Podendo então preencher os campos.<br/>
 <img src="images/tela_inicial.jpg" width = "300">  <img src="images/tela_adicionar.jpg" width = "300"><br/>
 
 ## Testes 
-<img src="images/tela_inicial_adicionado.jpg" width = "300">  <img src="images/tela_inicial_mais_alunos.jpg" width = "300"> 
+Após preencher os campos e salvar, ele pode voltar para a tela inicial e verificar que o aluno já aparece (imagem da essquerda). Ele pode adicionar quantos alunos dejesar (imagem da direita). <br/>
+<img src="images/tela_inicial_adicionado.jpg" width = "300">  <img src="images/tela_inicial_mais_alunos.jpg" width = "300"> <br/>
+Ao clicar no nome de um dos alunos ele é redirecionado para a tela de detalhes (imagem da direita abaixo) e verificar se está tudo correto. Caso ele deseje alterar alguma informação, basta clicar no botão editar, caso queira deletar um aluno, basta clicar no botão deletar. ao clicar no botão deletar o nome do aluno já não aparece mais na tela inicial, como mostrado na imagem da direita.<br/>
 <img src="images/detalhes_aluno.jpg" width = "300">  <img src="images/tela_inicial_aluno_deletado.jpg" width = "300">
 <br/>
 
