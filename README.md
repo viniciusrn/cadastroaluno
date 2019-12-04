@@ -74,7 +74,7 @@ $ SDK location not found. Define location with an ANDROID_SDK_ROOT environment v
 é referente à falta do caminho do SDK. **Solução:** ir para a pasta do projeto react-native e então para o diretório do android e criar o arquivo "local.properties". Nele deve adicionar esse caminho: sdk.dir = /home/USERNAME/Android/Sdk (USERNAME = viniciusriemma, no meu caso).
 Agora sim, utilizando novamente o comando:
 ```
-$ sudo react-native start-android
+$ sudo react-native run-android
 ```
 O aplicativo é instalado com sucesso.<br/>
 Para dar continuidade ao projeto é necessário instalar os seguintes pacotes:
