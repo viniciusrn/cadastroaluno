@@ -112,18 +112,12 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle".<br/>
 Agora sim o aplicativo estará funcionando corretamente.
 
 ## Resultados
-<p float= "left"> 
-  <img src="images/tela_inicial.jpg" width = "300">  
-  <img src="images/tela_adicionar.jpg" width = "300">
-</p>
-## Testes
-<p float= "left"> 
-  <img src="images/tela_inicial_adicionado.jpg" width = "300">  
-  <img src="images/detalhes_aluno.jpg" width = "300">
-</p>
-<p float= "left"> 
-  <img src="images/tela_inicial_mais_alunos.jpg" width = "300">  
-  <img src="images/tela_inicial_aluno_deletado.jpg" width = "300">
-</p>
+<img src="images/tela_inicial.jpg" width = "300">  <img src="images/tela_adicionar.jpg" width = "300"><br/>
+
+## Testes 
+<img src="images/tela_inicial_adicionado.jpg" width = "300">  <img src="images/tela_inicial_mais_alunos.jpg" width = "300"> 
+<img src="images/detalhes_aluno.jpg" width = "300">  <img src="images/tela_inicial_aluno_deletado.jpg" width = "300">
+<br/>
+
 ## Considerações finais
 Esse foi meu primeiro projeto desenvolvido em React Native. Com pouco tempo de estudo e muita dedicação consegui fazer um _CRUD_ simples para cadastro de alunos. Há porém alguns temas a serem desenvolvidos no futuro como, validação de CPF, validação de CEP e validação data. Esse é um tema muito vasto e desafiador. Vou me dedicar mais tempo para me aprofundar em desenvolvimento mobile, para assim conseguir integrar com web.
